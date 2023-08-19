@@ -12,9 +12,16 @@ st.write('Here we analyze data from fetal cardiac monioring using a cardiotograp
 #Load data processing libraries
 import pandas as pd
 import numpy as np
-
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+import plotly.graph_objs as go
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+from imblearn.under_sampling import RandomUnderSampler
 #Read data
-fetal = pd.read_csv('fetal_dataset.csv')
+fetal = pd.read_csv('fetal_dataset.csv') 
 st.write(fetal.sample(6))
 
 #Explore the data
@@ -54,81 +61,46 @@ st.write('Check for class imbalance on the target variable')
 
 """'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
 
-# Calculate counts for each class
-class_counts = fetal ['fetal_health'].value_counts()
+# Create a count plot using Plotly Express
+fig = px.histogram(fetal, x="fetal_health", color ="fetal_health", category_orders={"fetal_health": [1, 2, 3]})
 
-# Create a bar chart using Streamlit's built-in charting function
-st.bar_chart(class_counts)
+# Set layout properties
+fig.update_layout(
+    xaxis_title='Fetal Health',
+    yaxis_title='Count',
+    title='Distribution of Fetal Health',
+    showlegend= True
+)
 
-Add labels and title
-st.xlabel('Fetal Health')
-st.ylabel('Count')
-st.title('Distribution of Fetal Health')
-st.write('The figure above shows the distribution of fetal health outcomes where 1=Normal, 2=Suspect, and 3=Pathological')
-
-st.column_chart(fetal['fetal_health']
-
-import os
-import matplotlib.pyplot as plt
-import plotly.express as px
-import plotly.graph_objs as go
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, confusion_matrix
-from imblearn.under_sampling import RandomUnderSampler
-
-# # Calculate counts for each class
-# class_counts = data['fetal_health'].value_counts()
-
-# # Create a bar chart using Streamlit's built-in charting function
-# st.bar_chart(class_counts)
-
-# # Add labels and title
-# st.xlabel('Fetal Health')
-# st.ylabel('Count')
-# st.title('Distribution of Fetal Health')
-# st.write('The figure above shows the distribution of fetal health outcomes where 1=Normal, 2=Suspect, and 3=Pathological')
-
-# # Create a count plot using Plotly Express
-# fig = px.histogram(fetal, x="fetal_health", color ="fetal_health", category_orders={"fetal_health": [1, 2, 3]})
-
-# # Set layout properties
-# fig.update_layout(
-#     xaxis_title='Fetal Health',
-#     yaxis_title='Count',
-#     title='Distribution of Fetal Health',
-#     showlegend= True
-# )
-
-# # Display the plot in Streamlit
-# st.plotly_chart(fig)
-# st.write('The figure above shows that there is a class imbalance on fetal outcomes where\
-#          1=Normal, 2=Suspect, and 3=Pathological')
+# Display the plot in Streamlit
+st.plotly_chart(fig)
+st.write('The figure above shows that there is a class imbalance on fetal outcomes where\
+         1=Normal, 2=Suspect, and 3=Pathological')
 
 
-# # Calculate the correlation matrix
-# corrmat = fetal.corr()
+# Calculate the correlation matrix
+corrmat = fetal.corr()
 
-# # Create a Plotly heatmap
-# heatmap_trace = go.Heatmap(
-#     z=corrmat.values,
-#     x=corrmat.columns,
-#     y=corrmat.columns,
-#     colorscale='RdBu',
-#     zmin=-1,
-#     zmax=1
-# )
+# Create a Plotly heatmap
+heatmap_trace = go.Heatmap(
+    z=corrmat.values,
+    x=corrmat.columns,
+    y=corrmat.columns,
+    colorscale='RdBu',
+    zmin=-1,
+    zmax=1
+)
 
-# layout = go.Layout(
-#     title='Correlation Matrix Heatmap',
-#     xaxis=dict(title='Features'),
-#     yaxis=dict(title='Features')
-# )
+layout = go.Layout(
+    title='Correlation Matrix Heatmap',
+    xaxis=dict(title='Features'),
+    yaxis=dict(title='Features')
+)
 
-# fig = go.Figure(data=[heatmap_trace], layout=layout)
+fig = go.Figure(data=[heatmap_trace], layout=layout)
 
-# # Display the heatmap in Streamlit
-# st.plotly_chart(fig)
+# Display the heatmap in Streamlit
+st.plotly_chart(fig)
 
 st.write(' "accelerations","prolongued_decelerations", \
          "abnormal_short_term_variability", \
