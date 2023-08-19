@@ -71,10 +71,10 @@ st.bar_chart(class_counts)
 # import matplotlib.pyplot as plt
 # import plotly.express as px
 # import plotly.graph_objs as go
-# from sklearn.model_selection import train_test_split
-# from sklearn.ensemble import RandomForestClassifier
-# from sklearn.metrics import classification_report, confusion_matrix
-# from imblearn.under_sampling import RandomUnderSampler
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+from imblearn.under_sampling import RandomUnderSampler
 
 # # Calculate counts for each class
 # class_counts = data['fetal_health'].value_counts()
