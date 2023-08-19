@@ -54,29 +54,40 @@ st.write('Check for class imbalance on the target variable')
 
 """'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
 
-
-
 # Calculate counts for each class
-class_counts = fetal['fetal_health'].value_counts()
+class_counts = data['fetal_health'].value_counts()
 
 # Define colors for the three outcomes
-colors = {
-    1: 'blue',
-    2: 'orange',
-    3: 'green'
-}
+colors = ['blue', 'orange', 'green']
 
-# Manually create a colored bar chart using HTML and CSS
-st.write('<style>.custom-bar { display: inline-block; width: 20px; height: {height}px; background-color: {color}; }</style>', unsafe_allow_html=True)
+# Calculate the maximum count for scaling the bar heights
+max_count = max(class_counts.values)
 
-for outcome, count in class_counts.items():
-    st.write(f'<div class="custom-bar" style="height: {count}px; background-color: {colors[outcome]};"></div>')
+# Create a basic bar chart using HTML and CSS
+st.markdown("""
+<style>
+  .bar {
+    display: inline-block;
+    width: 30px;
+    margin: 2px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+  }
+</style>
+""", unsafe_allow_html=True)
+
+for i, count in enumerate(class_counts):
+    st.markdown(f'<div class="bar" style="height: {count / max_count * 200}px; background-color: {colors[i]};">{count}</div>', unsafe_allow_html=True)
 
 # Add labels and title
-st.write('Fetal Health')
-st.write('Count')
-st.title('Distribution of Fetal Health')
+st.markdown('<div style="text-align: center;">Fetal Health</div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align: center;">Count</div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align: center; font-size: 18px;">Distribution of Fetal Health</div>', unsafe_allow_html=True)
 st.write('The figure above shows the distribution of fetal health outcomes where 1=Normal, 2=Suspect, and 3=Pathological')
+
+
+
 
 # import os
 # import matplotlib.pyplot as plt
