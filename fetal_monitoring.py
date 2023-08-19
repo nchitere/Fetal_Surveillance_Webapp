@@ -61,10 +61,10 @@ class_counts = fetal ['fetal_health'].value_counts()
 st.bar_chart(class_counts)
 
 # Add labels and title
-st.xlabel('Fetal Health')
-st.ylabel('Count')
-st.title('Distribution of Fetal Health')
-st.write('The figure above shows the distribution of fetal health outcomes where 1=Normal, 2=Suspect, and 3=Pathological')
+# st.xlabel('Fetal Health')
+# st.ylabel('Count')
+# st.title('Distribution of Fetal Health')
+# st.write('The figure above shows the distribution of fetal health outcomes where 1=Normal, 2=Suspect, and 3=Pathological')
 
 
 # import os
