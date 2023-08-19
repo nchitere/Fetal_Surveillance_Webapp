@@ -59,7 +59,7 @@ import os
 if "DYNO" in os.environ:
     import matplotlib
     matplotlib.use("agg")
- import matplotlib.pyplot as plt   
+import matplotlib.pyplot as plt   
 if "DYNO" in os.environ:
       import seaborn
       seaborn.use("agg")
