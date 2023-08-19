@@ -55,7 +55,7 @@ st.write('Check for class imbalance on the target variable')
 """'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
 
 # Calculate counts for each class
-class_counts = data['fetal_health'].value_counts()
+class_counts = fetal['fetal_health'].value_counts()
 
 # Define colors for the three outcomes
 colors = ['blue', 'orange', 'green']
