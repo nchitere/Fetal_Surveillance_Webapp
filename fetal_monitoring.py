@@ -59,11 +59,10 @@ import os
 if "DYNO" in os.environ:
     import matplotlib
     matplotlib.use("agg")
-    
+ import matplotlib.pyplot as plt   
 if "DYNO" in os.environ:
       import seaborn
       seaborn.use("agg")
-import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objs as go
