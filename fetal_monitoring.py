@@ -55,15 +55,19 @@ st.write('Check for class imbalance on the target variable')
 """'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
 import os
 
-# Use a non-interactive backend for matplotlib
+# Use non-interactive backends for visualization libraries
 if "DYNO" in os.environ:
     import matplotlib
     matplotlib.use("agg")
-import matplotlib.pyplot as plt   
-if "DYNO" in os.environ:
-      import seaborn
-      seaborn.use("agg")
-import seaborn as sns
+
+    import seaborn as sns
+    sns.set(style="white")  # Set Seaborn style
+    
+    import plotly.io as pio
+    pio.renderers.default = "png"  # Set Plotly renderer to PNG
+    
+
+import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objs as go
 from sklearn.model_selection import train_test_split
