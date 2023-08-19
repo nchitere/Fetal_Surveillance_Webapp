@@ -59,8 +59,11 @@ st.write('Check for class imbalance on the target variable')
 # Calculate counts for each class
 class_counts = fetal['fetal_health'].value_counts()
 
-# Create a bar chart using Streamlit's built-in charting function
-st.bar_chart(class_counts)
+# Define colors for the three outcomes
+colors = ['blue', 'orange', 'green']
+
+# Create a bar chart with colored bars
+st.bar_chart(class_counts, color=colors)
 
 # Add labels and title
 st.xlabel('Fetal Health')
@@ -68,14 +71,14 @@ st.ylabel('Count')
 st.title('Distribution of Fetal Health')
 st.write('The figure above shows the distribution of fetal health outcomes where 1=Normal, 2=Suspect, and 3=Pathological')
 
-import os
-import matplotlib.pyplot as plt
-import plotly.express as px
-import plotly.graph_objs as go
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, confusion_matrix
-from imblearn.under_sampling import RandomUnderSampler
+# import os
+# import matplotlib.pyplot as plt
+# import plotly.express as px
+# import plotly.graph_objs as go
+# from sklearn.model_selection import train_test_split
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn.metrics import classification_report, confusion_matrix
+# from imblearn.under_sampling import RandomUnderSampler
 
 # Create a count plot using Plotly Express
 fig = px.histogram(fetal, x="fetal_health", color ="fetal_health", category_orders={"fetal_health": [1, 2, 3]})
