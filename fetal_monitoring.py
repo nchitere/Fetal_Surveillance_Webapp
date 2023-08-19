@@ -53,10 +53,12 @@ st.write('Check for class imbalance on the target variable')
 """Target"""
 
 """'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
-#Import visualization and machine learning modules
-import matplotlib
-matplotlib.use('Agg')  # Use the 'Agg' backend
-import matplotlib.pyplot as plt
+import os
+
+# Use a non-interactive backend for matplotlib
+if "DYNO" in os.environ:
+    import matplotlib
+    matplotlib.use("agg")
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objs as go
