@@ -12,8 +12,8 @@ st.write('Here we analyze data from fetal cardiac monioring using a cardiotograp
 #Load data processing libraries
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 import plotly.express as px
 import plotly.graph_objs as go
 from sklearn.model_selection import train_test_split
