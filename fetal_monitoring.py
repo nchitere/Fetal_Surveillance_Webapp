@@ -12,14 +12,7 @@ st.write('Here we analyze data from fetal cardiac monioring using a cardiotograp
 #Load data processing libraries
 import pandas as pd
 import numpy as np
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# import plotly.express as px
-# import plotly.graph_objs as go
-# from sklearn.model_selection import train_test_split
-# from sklearn.ensemble import RandomForestClassifier
-# from sklearn.metrics import classification_report, confusion_matrix
-# from imblearn.under_sampling import RandomUnderSampler
+
 #Read data
 fetal = pd.read_csv('fetal_dataset.csv')
 st.write(fetal.sample(6))
@@ -60,6 +53,15 @@ st.write('Check for class imbalance on the target variable')
 """Target"""
 
 """'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
+#Import visualization and machine learning modules
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+import plotly.graph_objs as go
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+from imblearn.under_sampling import RandomUnderSampler
 
 # Create a count plot using Plotly Express
 fig = px.histogram(fetal, x="fetal_health", color ="fetal_health", category_orders={"fetal_health": [1, 2, 3]})
