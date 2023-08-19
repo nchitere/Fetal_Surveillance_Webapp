@@ -53,6 +53,21 @@ st.write('Check for class imbalance on the target variable')
 """Target"""
 
 """'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
+
+
+
+# Calculate counts for each class
+class_counts = fetal['fetal_health'].value_counts()
+
+# Create a bar chart using Streamlit's built-in charting function
+st.bar_chart(class_counts)
+
+# Add labels and title
+st.xlabel('Fetal Health')
+st.ylabel('Count')
+st.title('Distribution of Fetal Health')
+st.write('The figure above shows the distribution of fetal health outcomes where 1=Normal, 2=Suspect, and 3=Pathological')
+
 import os
 import matplotlib.pyplot as plt
 import plotly.express as px
