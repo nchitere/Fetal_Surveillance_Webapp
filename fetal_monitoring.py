@@ -60,14 +60,21 @@ st.write('Check for class imbalance on the target variable')
 class_counts = fetal['fetal_health'].value_counts()
 
 # Define colors for the three outcomes
-colors = ['blue', 'orange', 'green']
+colors = {
+    1: 'blue',
+    2: 'orange',
+    3: 'green'
+}
 
-# Create a bar chart with colored bars
-st.bar_chart(class_counts, color=colors)
+# Manually create a colored bar chart using HTML and CSS
+st.write('<style>.custom-bar { display: inline-block; width: 20px; height: {height}px; background-color: {color}; }</style>', unsafe_allow_html=True)
+
+for outcome, count in class_counts.items():
+    st.write(f'<div class="custom-bar" style="height: {count}px; background-color: {colors[outcome]};"></div>')
 
 # Add labels and title
-st.xlabel('Fetal Health')
-st.ylabel('Count')
+st.write('Fetal Health')
+st.write('Count')
 st.title('Distribution of Fetal Health')
 st.write('The figure above shows the distribution of fetal health outcomes where 1=Normal, 2=Suspect, and 3=Pathological')
 
