@@ -40,7 +40,6 @@ pytz-deprecation-shim
 referencing
 requests==2.31.0
 rich==13.5.2
-rpds-py
 scikit-learn==1.3.0
 scipy==1.11.1
 seaborn==0.12.2
