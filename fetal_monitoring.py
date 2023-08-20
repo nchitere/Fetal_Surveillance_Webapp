@@ -12,14 +12,14 @@ st.write('Here we analyze data from fetal cardiac monioring using a cardiotograp
 #Load data processing libraries
 import pandas as pd
 import numpy as np
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# import plotly.express as px
-# import plotly.graph_objs as go
-# from sklearn.model_selection import train_test_split
-# from sklearn.ensemble import RandomForestClassifier
-# from sklearn.metrics import classification_report, confusion_matrix
-# from imblearn.under_sampling import RandomUnderSampler
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+import plotly.graph_objs as go
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+from imblearn.under_sampling import RandomUnderSampler
 #Read data
 fetal = pd.read_csv('fetal_dataset.csv') 
 st.write(fetal.sample(6))
