@@ -37,7 +37,7 @@ pyparsing
 python-dateutil
 pytz
 pytz-deprecation-shim
-referencing==0.30.2
+referencing
 requests==2.31.0
 rich==13.5.2
 rpds-py==0.9.2
