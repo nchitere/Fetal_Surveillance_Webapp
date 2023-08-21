@@ -108,7 +108,7 @@ st.write("accelerations","prolongued_decelerations", \
          "abnormal_short_term_variability", \
          "percentage_of_time_with_abnormal_long_term_variability" \
          "and" "mean_value_of_long_term_variability" \
-         are the features with higher correlation with fetal_health')
+         "are the features with higher correlation with fetal_health")
 
 
 st.title('RandomForest Classfier')
