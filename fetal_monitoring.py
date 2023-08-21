@@ -6,7 +6,7 @@ import streamlit as st
 
 st.title(':baby: Fetal monitoring project: :baby:')
 st.write('A fetal monitoring is critical for good neonatal outcomes in labor and delivery')
-st.write('Here we analyze data from fetal cardiac monioring using a cardiotograph')
+st.write('Here we use machine learning to predict which features are the best predictors of fetal outcomes')
 
 
 #Load data processing libraries
@@ -20,11 +20,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from imblearn.under_sampling import RandomUnderSampler
+
 #Read data
 fetal = pd.read_csv('fetal_dataset.csv') 
 st.write(fetal.sample(6))
 
-#Explore the data
+#Explore the datas summary statistics
 st.write('Summary statistics')
 st.write(fetal.describe().T)
 
@@ -32,10 +33,11 @@ st.write(fetal.describe().T)
 st.title('Data analysis and exploration')
 st.write('Check for class imbalance on the target variable')
 
+#Features and Target
 """Features"""
 
-"""'baseline value' FHR baseline (beats per minute)"""
-"""'accelerations' Number of accelerations per second """
+"""baseline value: FHR baseline (beats per minute)"""
+"""accelerations: Number of accelerations per second """
 """fetal_movement: Number of fetal movements per second """
 """ uterine_contractions: Number of uterine contractions per second """
 """light_decelerations: Number of light decelerations per second """
@@ -61,7 +63,7 @@ st.write('Check for class imbalance on the target variable')
 
 """'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
 
-# Create a count plot using Plotly Express
+# Create a count plot of the target column (fetal_health) using Plotly Express
 fig = px.histogram(fetal, x="fetal_health", color ="fetal_health", category_orders={"fetal_health": [1, 2, 3]})
 
 # Set layout properties
@@ -79,9 +81,9 @@ st.write('The figure above shows that there is a class imbalance on fetal outcom
 
 
 # Calculate the correlation matrix
-corrmat = fetal.corr()
+st.write(corrmat = fetal.corr())
 
-# Create a Plotly heatmap
+# Create a Plotly heatmap from corrmat
 heatmap_trace = go.Heatmap(
     z=corrmat.values,
     x=corrmat.columns,
@@ -102,14 +104,15 @@ fig = go.Figure(data=[heatmap_trace], layout=layout)
 # Display the heatmap in Streamlit
 st.plotly_chart(fig)
 
-st.write(' "accelerations","prolongued_decelerations", \
+st.write("accelerations","prolongued_decelerations", \
          "abnormal_short_term_variability", \
          "percentage_of_time_with_abnormal_long_term_variability" \
-         and "mean_value_of_long_term_variability" \
-         are the features with higher correlation with fetal_health.')
+         "and" "mean_value_of_long_term_variability" \
+         are the features with higher correlation with fetal_health')
 
 
 st.title('RandomForest Classfier')
+
 # Define features and target
 features = ['accelerations', 'prolongued_decelerations', 'abnormal_short_term_variability', 'percentage_of_time_with_abnormal_long_term_variability', 'mean_value_of_long_term_variability']
 target = 'fetal_health'
@@ -142,6 +145,7 @@ st.write("\nClassification Report:\n", classification_report(y_test, y_pred))
 
 
 #Correct for class imbalance
+
 # Split the data into training and testing sets
 X = fetal[features]
 y = fetal[target]
