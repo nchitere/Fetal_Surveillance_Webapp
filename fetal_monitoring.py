@@ -81,7 +81,7 @@ st.write('The figure above shows that there is a class imbalance on fetal outcom
 
 
 # Calculate the correlation matrix
-st.write(corrmat = fetal.corr())
+corrmat = fetal.corr()
 
 # Create a Plotly heatmap from corrmat
 heatmap_trace = go.Heatmap(
