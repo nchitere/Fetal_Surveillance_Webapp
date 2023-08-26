@@ -5,17 +5,22 @@ import streamlit as st
 ##Set title to Fetal monitoring project
 
 st.title(':baby: Fetal monitoring project: :baby:')
-st.write('A fetal monitoring is critical for good neonatal outcomes in labor and delivery')
-st.write('Here we use machine learning to predict which features are the best predictors of fetal outcomes')
+st.write('Fetal monitoring is critical for good neonatal outcomes in labor and delivery')
+st.write('Knowing which indicators to focus on can be the difference between good vs bad neonatal outcomes')
+st.write('Here we use machine learning to singleout which features are the best predictors of fetal outcomes')
 
 
 #Load data processing libraries
 import pandas as pd
 import numpy as np
+
+#Load data visualization libaries
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objs as go
+
+#Load machine learning libaries
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
@@ -23,15 +28,8 @@ from imblearn.under_sampling import RandomUnderSampler
 
 #Read data
 fetal = pd.read_csv('fetal_dataset.csv') 
+"""Here is a snippet of the fetal surveillance data set"""
 st.write(fetal.sample(6))
-
-#Explore the datas summary statistics
-st.write('Summary statistics')
-st.write(fetal.describe().T)
-
-#Data analysis and exploration
-st.title('Data analysis and exploration')
-st.write('Check for class imbalance on the target variable')
 
 #Features and Target
 """Features"""
@@ -62,6 +60,37 @@ st.write('Check for class imbalance on the target variable')
 """Target"""
 
 """'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
+
+#Explore the summary statistics
+st.write('Summary statistics')
+st.write(fetal.describe().T)
+
+#Data analysis and exploration
+st.title('Data analysis and exploration')
+
+st.title('Data missingness check')
+
+    # Calculate missing data percentages for each column
+    missing_percentages = (fetal.isnull().sum() / len(fetal)) * 100
+
+    # Sort columns by missing percentage in descending order
+    missing_percentages = missing_percentages.sort_values(ascending=False)
+
+    # Create a bar plot to visualize missing data percentages
+    st.pyplot(plt.figure(figsize=(10, 6)))
+    sns.barplot(x=missing_percentages.index, y=missing_percentages)
+    plt.xticks(rotation=90)
+    plt.ylabel('Missing Percentage')
+    plt.xlabel('Columns')
+    plt.title('Missing Data Summary')
+    st.pyplot(plt)
+
+    # Display missing data percentages in a table
+    st.write("Missing Data Percentages:")
+    st.write(missing_percentages)
+
+
+st.write('Check for class imbalance on the target variable')
 
 # Create a count plot of the target column (fetal_health) using Plotly Express
 fig = px.histogram(fetal, x="fetal_health", color ="fetal_health", category_orders={"fetal_health": [1, 2, 3]})
