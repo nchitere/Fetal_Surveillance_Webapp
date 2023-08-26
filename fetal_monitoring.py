@@ -70,24 +70,24 @@ st.title('Data analysis and exploration')
 
 st.title('Data missingness check')
 
-    # Calculate missing data percentages for each column
-    missing_percentages = (fetal.isnull().sum() / len(fetal)) * 100
+# Calculate missing data percentages for each column
+missing_percentages = (fetal.isnull().sum() / len(fetal)) * 100
 
-    # Sort columns by missing percentage in descending order
-    missing_percentages = missing_percentages.sort_values(ascending=False)
+# Sort columns by missing percentage in descending order
+missing_percentages = missing_percentages.sort_values(ascending=False)
 
-    # Create a bar plot to visualize missing data percentages
-    st.pyplot(plt.figure(figsize=(10, 6)))
-    sns.barplot(x=missing_percentages.index, y=missing_percentages)
-    plt.xticks(rotation=90)
-    plt.ylabel('Missing Percentage')
-    plt.xlabel('Columns')
-    plt.title('Missing Data Summary')
-    st.pyplot(plt)
+# Create a bar plot to visualize missing data percentages
+st.pyplot(plt.figure(figsize=(10, 6)))
+sns.barplot(x=missing_percentages.index, y=missing_percentages)
+plt.xticks(rotation=90)
+plt.ylabel('Missing Percentage')
+plt.xlabel('Columns')
+plt.title('Missing Data Summary')
+st.pyplot(plt)
 
-    # Display missing data percentages in a table
-    st.write("Missing Data Percentages:")
-    st.write(missing_percentages)
+# Display missing data percentages in a table
+st.write("Missing Data Percentages:")
+st.write(missing_percentages)
 
 
 st.write('Check for class imbalance on the target variable')
