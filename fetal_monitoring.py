@@ -8,7 +8,7 @@ st.title(':baby: Fetal monitoring project: :baby:')
 st.write('Fetal monitoring is critical for good neonatal outcomes in labor and delivery')
 st.write('Knowing which indicators to focus on can be the difference between good vs bad neonatal outcomes')
 st.write('Here we use machine learning to singleout which features are the best predictors of fetal outcomes')
-
+st.write('Data source: Kaggle')
 
 #Load data processing libraries
 import pandas as pd
@@ -32,7 +32,7 @@ fetal = pd.read_csv('fetal_dataset.csv')
 st.write(fetal.sample(6))
 
 #Features and Target
-"""Features"""
+st.title('Features')
 
 """baseline value: FHR baseline (beats per minute)"""
 """accelerations: Number of accelerations per second """
@@ -57,7 +57,7 @@ st.write(fetal.sample(6))
 """histogram_variance: Histogram variance """
 """histogram_tendency: Histogram tendency"""
 
-"""Target"""
+st.title('Target')
 
 """'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
 
@@ -67,8 +67,7 @@ st.write(fetal.describe().T)
 
 #Data analysis and exploration
 st.title('Data analysis and exploration')
-
-st.title('Data missingness check')
+st.write('Data missingness check')
 
 # Calculate missing data percentages for each column
 missing_percentages = (fetal.isnull().sum() / len(fetal)) * 100
@@ -76,18 +75,10 @@ missing_percentages = (fetal.isnull().sum() / len(fetal)) * 100
 # Sort columns by missing percentage in descending order
 missing_percentages = missing_percentages.sort_values(ascending=False)
 
-# Create a bar plot to visualize missing data percentages
-st.pyplot(plt.figure(figsize=(10, 6)))
-sns.barplot(x=missing_percentages.index, y=missing_percentages)
-plt.xticks(rotation=90)
-plt.ylabel('Missing Percentage')
-plt.xlabel('Columns')
-plt.title('Missing Data Summary')
-st.pyplot(plt)
-
 # Display missing data percentages in a table
 st.write("Missing Data Percentages:")
 st.write(missing_percentages)
+st.write('No missing data')
 
 
 st.write('Check for class imbalance on the target variable')
