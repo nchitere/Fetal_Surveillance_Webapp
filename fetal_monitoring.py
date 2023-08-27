@@ -193,7 +193,8 @@ clf.fit(X_train_resampled, y_train_resampled)
 # Predictions
 y_pred = clf.predict(X_test)
 
-st.write('Model evaluation after accounting for class imbalance')
+
+st.title('Model evaluation after accounting for class imbalance')
 
 classification_rep = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
 
