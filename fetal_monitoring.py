@@ -59,7 +59,7 @@ st.title('Features')
 
 st.title('Target')
 
-"""'fetal_health' Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
+"""fetal_health: Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
 
 #Explore the summary statistics
 st.write('Summary statistics')
@@ -78,10 +78,10 @@ missing_percentages = missing_percentages.sort_values(ascending=False)
 # Display missing data percentages in a table
 st.write("Missing Data Percentages:")
 st.write(missing_percentages)
-st.write('No missing data')
+st.write('As shown in the above summary table, there is no missing data')
 
 
-st.write('Check for class imbalance on the target variable')
+st.write('Checking for class imbalance on the target variable')
 
 # Create a count plot of the target column (fetal_health) using Plotly Express
 fig = px.histogram(fetal, x="fetal_health", color ="fetal_health", category_orders={"fetal_health": [1, 2, 3]})
@@ -98,6 +98,8 @@ fig.update_layout(
 st.plotly_chart(fig)
 st.write('The figure above shows that there is a class imbalance on fetal outcomes where\
          1=Normal, 2=Suspect, and 3=Pathological')
+st.write('The displayed output indicates that most of the monitored fetuses exhibit normal fetal health,\
+while a smaller portion falls into the suspect or pathological categories.')
 
 
 # Calculate the correlation matrix
@@ -125,13 +127,15 @@ fig = go.Figure(data=[heatmap_trace], layout=layout)
 # Display the heatmap in Streamlit
 st.plotly_chart(fig)
 
-st.write("accelerations","prolongued_decelerations", \
-         "abnormal_short_term_variability", \
-         "percentage_of_time_with_abnormal_long_term_variability" \
-         "and" "mean_value_of_long_term_variability" \
-         "are the features with higher correlation with fetal_health")
+st.write('The features with the highest correlation to fetal health, as per the correlation matrix, are:'
+         '\n-1. Accelerations'
+         '\n-2. Prolonged Decelerations'
+         '\n-3. Abnormal Short-term Variability'
+         '\n-4. Percentage of Time with Abnormal Long-term Variability'
+         '\n-5. Mean Value of Long-term Variability')
 
 
+st.title('Models')
 st.title('RandomForest Classfier')
 
 # Define features and target
