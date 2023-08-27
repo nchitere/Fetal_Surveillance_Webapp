@@ -159,7 +159,7 @@ clf.fit(X_train, y_train)
 # Predictions
 y_pred = clf.predict(X_test)
 
-# Evaluate the model
+st.title('Model evaluation on uncorrected class imbalance')
 st.write('Confusion matrix')
 st.write("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 st.write('Classification report')
@@ -172,7 +172,7 @@ st.write("\nClassification Report:\n", classification_report(y_test, y_pred))
                     a good overall balance between precision and recall across all classes."""
 
 
-#Correct for class imbalance
+st.write('Correcting for class imbalance in the target variable(fetal_health)')
 
 # Split the data into training and testing sets
 X = fetal[features]
@@ -192,7 +192,7 @@ clf.fit(X_train_resampled, y_train_resampled)
 # Predictions
 y_pred = clf.predict(X_test)
 
-# Evaluate the model
+st.write('Model evaluation after accounting for class imbalance')
 classification_rep = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
 
 # Display classification report in Streamlit
