@@ -104,8 +104,8 @@ while a smaller portion falls into the suspect or pathological categories.')
 
 # Calculate the correlation matrix
 corrmat = fetal.corr()
-st.write(corrmat)
-         
+
+      
 # Create a Plotly heatmap from corrmat
 heatmap_trace = go.Heatmap(
     z=corrmat.values,
