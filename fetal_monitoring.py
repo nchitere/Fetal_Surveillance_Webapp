@@ -128,11 +128,11 @@ fig = go.Figure(data=[heatmap_trace], layout=layout)
 st.plotly_chart(fig)
 
 st.write('The features with the highest correlation to fetal health, as per the correlation matrix, are:'
-         '\n-1. Accelerations'
-         '\n-2. Prolonged Decelerations'
-         '\n-3. Abnormal Short-term Variability'
-         '\n-4. Percentage of Time with Abnormal Long-term Variability'
-         '\n-5. Mean Value of Long-term Variability')
+         '\n 1. Accelerations'
+         '\n 2. Prolonged Decelerations'
+         '\n 3. Abnormal Short-term Variability'
+         '\n 4. Percentage of Time with Abnormal Long-term Variability'
+         '\n 5. Mean Value of Long-term Variability')
 
 
 st.title('Models')
