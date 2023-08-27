@@ -201,6 +201,18 @@ classification_rep = classification_report(y_test, y_pred, target_names=['Normal
 # Display classification report in Streamlit
 st.text("Classification Report:\n" + classification_rep)
 
+st.write("The classification report evaluates the model's performance in predicting fetal health outcomes categorized as 'Normal,' 'Suspect,' and 'Pathological.'\n")
+
+st.write("For the 'Normal' class, the model demonstrates high precision (97%) and moderate recall (81%), resulting in an F1-score of 0.88.\n")
+
+st.write("In the 'Suspect' class, precision is lower (57%), but recall is higher (86%), yielding an F1-score of 0.69.\n")
+
+st.write("For the 'Pathological' class, precision is modest (53%), while recall is high (97%), leading to an F1-score of 0.68.\n")
+
+st.write("Overall accuracy is 83%, and macro averages indicate precision-recall balance across classes (69% precision, 88% recall, 75% F1-score). Weighted averages consider class frequencies, resulting in balanced performance metrics (88% precision, 83% recall, 84% F1-score).\n")
+
+st.write("The report offers insights into the model's competence across fetal health categories, revealing strengths and areas for enhancement in predicting different cases.")
+
 
 # st.set_option('deprecation.showPyplotGlobalUse', False)
 # from sklearn.preprocessing import label_binarize
