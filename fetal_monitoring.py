@@ -137,10 +137,9 @@ st.write('The features with the highest correlation to fetal health, as per the 
 
 st.title('Models')
 st.title('RandomForest Classfier')
-st.write('The Random Forest Classifier demonstrates its robustness in fetal health prediction,'
-         ' harnessing a diverse array of features for precise evaluations.'
-         '\nThe following confusion matrix offers a comprehensive view of classification outcomes,'
-         '\nwhile the accompanying classification report presents valuable metrics such as precision, recall, and F1-score for each class.')
+st.write('The Random Forest Classifier demonstrates its robustness in fetal health prediction,harnessing a diverse array of features for precise evaluations.'
+         '\n The following confusion matrix offers a comprehensive view of classification outcomes,'
+         '\n while the accompanying classification report presents valuable metrics such as precision, recall, and F1-score for each class.')
 
 # Define features and target
 features = ['accelerations', 'prolongued_decelerations', 'abnormal_short_term_variability', 'percentage_of_time_with_abnormal_long_term_variability', 'mean_value_of_long_term_variability']
