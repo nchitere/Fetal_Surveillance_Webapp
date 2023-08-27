@@ -211,8 +211,9 @@ st.write("For the 'Pathological' class, precision is modest (53%), while recall 
 
 st.write("Overall accuracy is 83%, and macro averages indicate precision-recall balance across classes (69% precision, 88% recall, 75% F1-score). Weighted averages consider class frequencies, resulting in balanced performance metrics (88% precision, 83% recall, 84% F1-score).\n")
 
-st.write("The report offers insights into the model's competence across fetal health categories, revealing strengths and areas for enhancement in predicting different cases.")
+#st.write("The report offers insights into the model's competence across fetal health categories, revealing strengths and areas for enhancement in predicting different cases.")
 
+st.title('Reciever operating characteristics')
 
 # st.set_option('deprecation.showPyplotGlobalUse', False)
 # from sklearn.preprocessing import label_binarize
