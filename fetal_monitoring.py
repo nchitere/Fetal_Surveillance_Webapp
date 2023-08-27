@@ -160,6 +160,7 @@ clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 
 st.title('Model evaluation on uncorrected class imbalance')
+
 st.write('Confusion matrix')
 st.write("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 st.write('Classification report')
@@ -193,6 +194,7 @@ clf.fit(X_train_resampled, y_train_resampled)
 y_pred = clf.predict(X_test)
 
 st.write('Model evaluation after accounting for class imbalance')
+
 classification_rep = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
 
 # Display classification report in Streamlit
