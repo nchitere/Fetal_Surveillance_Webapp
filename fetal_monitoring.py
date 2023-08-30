@@ -5,10 +5,12 @@ import streamlit as st
 ##Set title to Fetal monitoring project
 
 st.title(':baby: Fetal monitoring project: :baby:')
-st.write('Fetal monitoring is critical for good neonatal outcomes in labor and delivery')
+st.write('The monitoring of fetal well-being stands as a pivotal factor in shaping positive neonatal outcomes in pregnancy, labor and delivery')
 st.write('Knowing which indicators to focus on can be the difference between good vs bad neonatal outcomes')
-st.write('Here we use machine learning to singleout which features are the best predictors of fetal outcomes')
+st.write('In this project we use machine learning to singleout which features are the best predictors of fetal outcomes')
 st.write('Data source: Kaggle')
+st.write('This dataset contains 2126 records of features extracted from Cardiotocogram exams,\
+which were then classified by three expert obstetritians into 3 classes:1. Normal, 2.Suspect, & 3.Pathological')
 
 #Load data processing libraries
 import pandas as pd
@@ -34,28 +36,28 @@ st.write(fetal.sample(6))
 #Features and Target
 st.title('Features')
 
-"""baseline value: FHR baseline (beats per minute)"""
-"""accelerations: Number of accelerations per second """
-"""fetal_movement: Number of fetal movements per second """
-""" uterine_contractions: Number of uterine contractions per second """
-"""light_decelerations: Number of light decelerations per second """
-"""severe_decelerations: Number of severe decelerations per second"""
-"""prolongued_decelerations: Number of prolonged decelerations per second """
-"""abnormal_short_term_variability: Percentage of time with abnormal short term variability"""
-"""mean_value_of_short_term_variability: Mean value of short term variability"""
-"""percentage_of_time_with_abnormal_long_term_variability: Percentage of\
+"""1. baseline value: FHR baseline (beats per minute)"""
+"""2. accelerations: Number of accelerations per second """
+"""3. fetal_movement: Number of fetal movements per second """
+"""4. uterine_contractions: Number of uterine contractions per second """
+"""5. light_decelerations: Number of light decelerations per second """
+"""6. severe_decelerations: Number of severe decelerations per second"""
+"""7. prolongued_decelerations: Number of prolonged decelerations per second """
+"""8. abnormal_short_term_variability: Percentage of time with abnormal short term variability"""
+"""9. mean_value_of_short_term_variability: Mean value of short term variability"""
+"""10. percentage_of_time_with_abnormal_long_term_variability: Percentage of\
       time with abnormal long term variability """
-"""mean_value_of_long_term_variability: Mean value of long term variability"""
-"""histogram_width: Width of FHR histogram"""
-"""histogram_min: Minimum (low frequency) of FHR histogram"""
-"""histogram_max: Maximum (high frequency) of FHR histogram"""
-"""histogram_number_of_peaks: Number of histogram peaks"""
-"""histogram_number_of_zeroes: Number of histogram zeros """
-"""histogram_mode: Histogram mode """
-"""histogram_mean: Histogram mean """
-"""histogram_median: Histogram median """
-"""histogram_variance: Histogram variance """
-"""histogram_tendency: Histogram tendency"""
+"""11. mean_value_of_long_term_variability: Mean value of long term variability"""
+"""12. histogram_width: Width of FHR histogram"""
+"""13. histogram_min: Minimum (low frequency) of FHR histogram"""
+"""14. histogram_max: Maximum (high frequency) of FHR histogram"""
+"""15. histogram_number_of_peaks: Number of histogram peaks"""
+"""16. histogram_number_of_zeroes: Number of histogram zeros """
+"""17. histogram_mode: Histogram mode """
+"""18. histogram_mean: Histogram mean """
+"""19. histogram_median: Histogram median """
+"""20. histogram_variance: Histogram variance """
+"""21. histogram_tendency: Histogram tendency"""
 
 st.title('Target')
 
