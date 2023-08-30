@@ -23,7 +23,7 @@ import plotly.graph_objs as go
 #Load machine learning libaries
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 from imblearn.under_sampling import RandomUnderSampler
 
 #Read data
