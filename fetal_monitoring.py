@@ -260,11 +260,11 @@ xgb = XGBClassifier(random_state=42)
 xgb.fit(X_train_resampled, y_train_resampled
 
 # Make predictions
-y_predx = xgb.predict(X_test)
+y_pred = xgb.predict(X_test)
 
 # Display model evaluation results
 st.write("Model evaluation:")
-classification_rep = classification_report(y_test, y_predx)
+classification_rep = classification_report(y_test, y_pred)
 st.write(classification_rep)
 
 
