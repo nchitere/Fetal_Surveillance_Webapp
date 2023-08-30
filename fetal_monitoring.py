@@ -257,7 +257,7 @@ st.title('Xgboost model')
 xgb = XGBClassifier(random_state=42)
 
 # Train the model
-xgb.fit(X_train_resampled, y_train_resampled
+xgb.fit(X_train_resampled, y_train_resampled)
 
 # Make predictions
 y_pred = xgb.predict(X_test)
