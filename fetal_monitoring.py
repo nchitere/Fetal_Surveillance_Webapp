@@ -62,7 +62,7 @@ st.title('Features')
 
 st.title('Target')
 
-"""fetal_health: Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
+"""1. fetal_health: Tagged as 1 (Normal), 2 (Suspect) and 3 (Pathological)"""
 
 #Explore the summary statistics
 st.write('Summary statistics')
