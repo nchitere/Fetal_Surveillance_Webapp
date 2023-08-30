@@ -221,7 +221,7 @@ from sklearn.preprocessing import label_binarize
 # Binarize the true labels for multiclass ROC analysis
 y_test_binarized = label_binarize(y_test, classes=[1, 2, 3])
 n_classes = y_test_binarized.shape[1]
-
+y_pred_probs = clf.predict_proba(X_test)
 # Calculate ROC AUC scores for each class
 roc_auc_scores = roc_auc_score(y_test_binarized, y_pred_probs, average=None)
 
