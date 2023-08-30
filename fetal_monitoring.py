@@ -254,17 +254,17 @@ st.pyplot()
 
 st.title('Xgboost model')
 # Instantiate an XGBoost model
-model = XGBClassifier(random_state=42)
+xgb = XGBClassifier(random_state=42)
 
 # Train the model
-model.fit(X_train_resampled, y_train_resampled
+xgb.fit(X_train_resampled, y_train_resampled
 
 # Make predictions
-y_pred = model.predict(X_test)
+y_predx = xgb.predict(X_test)
 
 # Display model evaluation results
 st.write("Model evaluation:")
-classification_rep = classification_report(y_test, y_pred)
+classification_rep = classification_report(y_test, y_predx)
 st.write(classification_rep)
 
 
