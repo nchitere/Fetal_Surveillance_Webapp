@@ -254,8 +254,9 @@ st.pyplot()
 
 st.title('Xgboost model')
 # Instantiate an XGBoost model
-xgb = XGBClassifier(random_state=42)
-
+#xgb = XGBClassifier(random_state=42)
+class_labels = [1, 2, 3]
+xgb_classifier = XGBClassifier(objective='multi:softmax', num_class=len(class_labels), classes=class_labels)
 # Train the model
 xgb.fit(X_train_resampled, y_train_resampled)
 
