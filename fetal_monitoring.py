@@ -86,7 +86,7 @@ st.write('Since machine learning models such as RandomForest Classifiers cannot 
 and no data is missing, no further required.')
 
 
-st.write('Checking for class imbalance on the target variable')
+st.title('Checking for class imbalance on the target variable')
 st.write('Class imbalance in the target can result in a biased model,\
 might not generalize well on test data sets\
 and since the pathological neonatal outcomes are not the norm, yet flagging at risk neonates  is critical\
