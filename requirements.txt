@@ -57,4 +57,5 @@ tzlocal
 urllib3
 validators
 watchdog
+xgboost
 zipp
