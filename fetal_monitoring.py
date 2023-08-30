@@ -32,6 +32,7 @@ from imblearn.under_sampling import RandomUnderSampler
 fetal = pd.read_csv('fetal_dataset.csv') 
 """Here is a snippet of the fetal surveillance data set"""
 st.write(fetal.sample(6))
+st.write(fetal.shape)
 
 #Features and Target
 st.title('Features')
