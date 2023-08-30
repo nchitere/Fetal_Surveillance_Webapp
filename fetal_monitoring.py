@@ -83,14 +83,14 @@ st.write("Missing Data Percentages:")
 st.write(missing_percentages)
 st.write('As shown in the above summary table, there is no missing data')
 st.write('Since machine learning models such as RandomForest Classifiers cannot handle missing data, \
-and no data is missing, no further required.')
+and no data is missing, no further is required.')
 
 
 st.title('Checking for class imbalance on the target variable')
 st.write('Class imbalance in the target can result in a biased model,\
-might not generalize well on test data sets\
-and since the pathological neonatal outcomes are not the norm, yet flagging at risk neonates  is critical\
-it is important to check for and correct for class imbalance if appicable')
+might not generalize well on test data sets \
+and since the pathological neonatal outcomes are not the norm, yet flagging at risk neonates  is critical, \
+it is important to check for and correct for class imbalance where appicable')
 
 # Create a count plot of the target column (fetal_health) using Plotly Express
 fig = px.histogram(fetal, x="fetal_health", color ="fetal_health", category_orders={"fetal_health": [1, 2, 3]})
@@ -107,10 +107,10 @@ fig.update_layout(
 st.plotly_chart(fig)
 st.write('The figure above shows that there is a class imbalance on fetal outcomes where\
          1=Normal, 2=Suspect, and 3=Pathological')
-st.write('The displayed output indicates that most of the monitored fetuses exhibit normal fetal health,\
+st.write('The displayed output indicates that majority of the monitored fetuses are categorized normal fetal health,\
 while a smaller portion falls into the suspect or pathological categories.')
 
-
+st.title('Feature selection')
 # Calculate the correlation matrix
 corrmat = fetal.corr()
 
@@ -250,6 +250,19 @@ plt.legend(loc='lower right')
 plt.show()
 st.pyplot()
 
+st.title('Xgboost model')
+# Instantiate an XGBoost model
+model = XGBClassifier(random_state=42)
 
+# Train the model
+model.fit(X_train_resampled, y_train_resampled
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Display model evaluation results
+st.write("Model evaluation:")
+classification_rep = classification_report(y_test, y_pred)
+st.write(classification_rep)
 
 
