@@ -215,31 +215,31 @@ st.write("Overall accuracy is 83%, and macro averages indicate precision-recall 
 
 st.title('Reciever operating characteristics')
 
-# st.set_option('deprecation.showPyplotGlobalUse', False)
-# from sklearn.preprocessing import label_binarize
+st.set_option('deprecation.showPyplotGlobalUse', False)
+from sklearn.preprocessing import label_binarize
 
-# # Binarize the true labels for multiclass ROC analysis
-# y_test_binarized = label_binarize(y_test, classes=[1, 2, 3])
-# n_classes = y_test_binarized.shape[1]
+# Binarize the true labels for multiclass ROC analysis
+y_test_binarized = label_binarize(y_test, classes=[1, 2, 3])
+n_classes = y_test_binarized.shape[1]
 
-# # Calculate ROC AUC scores for each class
-# roc_auc_scores = roc_auc_score(y_test_binarized, y_pred_probs, average=None)
+# Calculate ROC AUC scores for each class
+roc_auc_scores = roc_auc_score(y_test_binarized, y_pred_probs, average=None)
 
-# # Plot ROC curves for each class
-# plt.figure(figsize=(8, 6))
-# for i in range(n_classes):
-#     fpr, tpr, _ = roc_curve(y_test_binarized[:, i], y_pred_probs[:, i])
-#     plt.plot(fpr, tpr, label=f'Class {target[i]} (AUC = {roc_auc_scores[i]:.2f})')
+# Plot ROC curves for each class
+plt.figure(figsize=(8, 6))
+for i in range(n_classes):
+    fpr, tpr, _ = roc_curve(y_test_binarized[:, i], y_pred_probs[:, i])
+    plt.plot(fpr, tpr, label=f'Class {target[i]} (AUC = {roc_auc_scores[i]:.2f})')
 
-# plt.plot([0, 1], [0, 1], 'k--')
-# plt.xlim([0.0, 1.0])
-# plt.ylim([0.0, 1.05])
-# plt.xlabel('False Positive Rate')
-# plt.ylabel('True Positive Rate')
-# plt.title('Receiver Operating Characteristic')
-# plt.legend(loc='lower right')
-# plt.show()
-# st.pyplot()
+plt.plot([0, 1], [0, 1], 'k--')
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Receiver Operating Characteristic')
+plt.legend(loc='lower right')
+plt.show()
+st.pyplot()
 
 
 
