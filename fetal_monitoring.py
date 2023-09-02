@@ -182,7 +182,7 @@ y_pred = clf.predict(X_test)
 
 st.title('Model evaluation on uncorrected class imbalance')
 
-st.write('Confusion matrix where 0:Normal, 1:Suspect & 2:Pathological')
+st.write('Confusion matrix where 0=Normal, 1=Suspect & 3=Pathological')
 st.write("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 st.write('Classification report')
 st.write("\nClassification Report:\n", classification_report(y_test, y_pred))
