@@ -296,8 +296,11 @@ xgb_classifier = XGBClassifier(objective='multi:softmax', num_class=len(class_la
 xgb_classifier.fit(X_train_oversampled, y_train_oversampled)
 
 # Evaluate the model on the test data
-accuracy = xgb_classifier.score(X_test, y_test)
-st.write("XGboost Accuracy on test set:", accuracy)
+accuracy_xg = xgb_classifier.score(X_test, y_test)
+st.write("XGboost Accuracy on test set:", accuracy_xg)
+#Confusion matrix
+confusion_matrix_xg=confusion_matrix(y_test, y_pred)
+st.text("Oversampled Classification Report Xgboost:\n" + confusion_matrix_xg)
 
 classification_rep_xg = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
 
