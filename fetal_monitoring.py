@@ -301,7 +301,7 @@ st.write("XGboost Accuracy on test set:", accuracy_xg)
 # #Confusion matrix
 y_pred_xg = xgb_classifier.predict(X_test)
 confusion_matrix_xg = confusion_matrix(y_test, y_pred_xg)
-st.text("Oversampled Confusion Matrix Xgboost:\n" + confusion_matrix_xg)
+#st.text("Oversampled Confusion Matrix Xgboost:\n" + confusion_matrix_xg)
 
 classification_rep_xg = classification_report(y_test, y_pred_xg, target_names=['Normal', 'Suspect', 'Pathological'])
 
