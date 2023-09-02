@@ -145,6 +145,16 @@ st.write('The features with the highest correlation to fetal health, as per the 
          '\n 4. Percentage of Time with Abnormal Long-term Variability'
          '\n 5. Mean Value of Long-term Variability')
 
+st.title('Encoding target variable') 
+st.write('The values on fetal_health category(1,2,3) to be mappped to 0,1,2')
+st.write("Why:")
+st.write("1. It simplifies model interpretation")
+st.write("2. Guarantees algorithm compatibility for certain models such as XGBoost")
+st.write("3. Allows for accurate interpretation of performance metrics")
+# Map the target variable values to 0, 1, and 2
+fetal['fetal_health'] = fetal['fetal_health'].map({1: 0, 2: 1, 3: 2})
+
+
 
 st.title('Models')
 st.title('RandomForest Classfier')
@@ -230,7 +240,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 from sklearn.preprocessing import label_binarize
 
 # Binarize the true labels for multiclass ROC analysis
-y_test_binarized = label_binarize(y_test, classes=[1, 2, 3])
+y_test_binarized = label_binarize(y_test, classes=[0, 1, 2])
 n_classes = y_test_binarized.shape[1]
 y_pred_probs = clf.predict_proba(X_test)
 # Calculate ROC AUC scores for each class
@@ -252,6 +262,15 @@ plt.legend(loc='lower right')
 plt.show()
 st.pyplot()
 
+# Create and train the XGBoost classifier on the resampled training data
+class_labels = [0, 1, 2]
+xgb_classifier = XGBClassifier(objective='multi:softmax', num_class=len(class_labels), classes=class_labels)
 
+#xgb_classifier = XGBClassifier()
+xgb_classifier.fit(X_train_resampled, y_train_resampled)
+
+# Evaluate the model on the test data
+accuracy = xgb_classifier.score(X_test, y_test)
+st.write("XGboost Accuracy on test set:", accuracy)
 
 
