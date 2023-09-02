@@ -307,8 +307,7 @@ classification_rep_xg = classification_report(y_test, y_pred_xg, target_names=['
 
 # Display classification report in Streamlit
 st.text("Oversampled Classification Report:\n" + classification_rep_xg)
-st.text("The model achieved high precision and recall for the Normal class (0.96 and 0.95, respectively), \
-indicating accurate predictions for this class." )
+st.text("The model achieved high precision and recall for the Normal class (0.96 and 0.95, respectively), indicating accurate predictions for this class." )
 st.write("The Suspect class had lower precision and recall (0.81 and 0.78), suggesting some difficulty in correctly identifying Suspect cases.")
 st.write("However, the model performed well in identifying Pathological cases, with a precision of 0.80 and high recall of 0.97.")
 st.write("Overall, the model achieved an accuracy of 93%, with a balanced macro average F1-score of 0.88 across all classes.")
