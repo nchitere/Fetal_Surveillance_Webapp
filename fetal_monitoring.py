@@ -182,14 +182,14 @@ y_pred = clf.predict(X_test)
 
 st.title('Model evaluation on uncorrected class imbalance')
 
-st.write('Confusion matrix')
+st.write('Confusion matrix where 0:Normal, 1:Suspect & 2:Pathological')
 st.write("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 st.write('Classification report')
 st.write("\nClassification Report:\n", classification_report(y_test, y_pred))
-"""the model is performing reasonably well. It has high precision and recall for class 1, \
+"""The model is performing reasonably well. It has high precision and recall for class 0, \
     meaning it's good at identifying instances of class \
-        1. Class 2 has slightly lower precision and recall, indicating some misclassifications. \
-            Class 3 also has good precision and recall. \
+        0(Normal). Class 1 has slightly lower precision and recall, indicating some misclassifications for category suspect. \
+            Class 2 also has good precision and recall(Pathological). \
                 The weighted average F1-score of 0.93 suggests that the model is providing \
                     a good overall balance between precision and recall across all classes."""
 
