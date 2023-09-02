@@ -204,14 +204,14 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # # Apply under-sampling to balance the classes
 rus = RandomUnderSampler(random_state=42)
-X_train_resampled, y_train_resampled = rus.fit_resample(X_train, y_train)
+X_train_undersampled, y_train_undersampled = rus.fit_resample(X_train, y_train)
 
 
 # Initialize the Random Forest Classifier
 clf = RandomForestClassifier(random_state=42)
 
 # Train the classifier on the resampled data
-clf.fit(X_train_resampled, y_train_resampled)
+clf.fit(X_train_undersampled, y_train_undersampled)
 
 # Predictions
 y_pred = clf.predict(X_test)
@@ -222,7 +222,7 @@ st.title('Model evaluation after accounting for class imbalance')
 classification_rep = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
 
 # Display classification report in Streamlit
-st.text("Classification Report:\n" + classification_rep)
+st.text("Undersampled Classification Report:\n" + classification_rep)
 
 st.write("The classification report evaluates the model's performance in predicting fetal health outcomes categorized as 'Normal,' 'Suspect,' and 'Pathological.'\n")
 
@@ -241,16 +241,16 @@ st.write("Overall accuracy is 83%, and macro averages indicate precision-recall 
 # Using SMOTE((Synthetic Minority Over-sampling Technique) to perform oversampling
 smote = SMOTE(sampling_strategy='auto', random_state=42)  
 
-X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
+X_train_oversampled, y_train_oversampled = smote.fit_resample(X_train, y_train)
 # Train the classifier on the resampled data
-clf.fit(X_train_resampled, y_train_resampled)
+clf.fit(X_train_oversampled, y_train_oversampled)
 
 # Predictions
 y_pred = clf.predict(X_test)
 classification_rep = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
 
 # Display classification report in Streamlit
-st.text("SMOTE Classification Report:\n" + classification_rep)
+st.text("Oversampled Classification Report:\n" + classification_rep)
 
 
 
@@ -286,12 +286,14 @@ plt.legend(loc='lower right')
 plt.show()
 st.pyplot()
 
-# Create and train the XGBoost classifier on the resampled training data
+
+st.title('XGboost')
+# Create and train the XGBoost classifier on the oversampled training data
 class_labels = [0, 1, 2]
 xgb_classifier = XGBClassifier(objective='multi:softmax', num_class=len(class_labels), classes=class_labels)
 
 #xgb_classifier = XGBClassifier()
-xgb_classifier.fit(X_train_resampled, y_train_resampled)
+xgb_classifier.fit(X_train_oversampled, y_train_oversampled)
 
 # Evaluate the model on the test data
 accuracy = xgb_classifier.score(X_test, y_test)
