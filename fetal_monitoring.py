@@ -28,6 +28,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score, roc_curve
 from imblearn.under_sampling import RandomUnderSampler
 from xgboost import XGBClassifier
+from imblearn.over_sampling import SMOTE
 
 
 #Read data
@@ -182,7 +183,7 @@ y_pred = clf.predict(X_test)
 
 st.title('Model evaluation on uncorrected class imbalance')
 
-st.write('Confusion matrix where 0=Normal, 1=Suspect & 3=Pathological')
+st.write('Confusion matrix where 0=Normal, 1=Suspect & 2=Pathological')
 st.write("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 st.write('Classification report')
 st.write("\nClassification Report:\n", classification_report(y_test, y_pred))
@@ -201,9 +202,10 @@ X = fetal[features]
 y = fetal[target]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Apply under-sampling to balance the classes
+# # Apply under-sampling to balance the classes
 rus = RandomUnderSampler(random_state=42)
 X_train_resampled, y_train_resampled = rus.fit_resample(X_train, y_train)
+
 
 # Initialize the Random Forest Classifier
 clf = RandomForestClassifier(random_state=42)
@@ -233,6 +235,28 @@ st.write("For the 'Pathological' class, precision is modest (53%), while recall 
 st.write("Overall accuracy is 83%, and macro averages indicate precision-recall balance across classes (69% precision, 88% recall, 75% F1-score). Weighted averages consider class frequencies, resulting in balanced performance metrics (88% precision, 83% recall, 84% F1-score).\n")
 
 #st.write("The report offers insights into the model's competence across fetal health categories, revealing strengths and areas for enhancement in predicting different cases.")
+
+
+
+# Using SMOTE((Synthetic Minority Over-sampling Technique) to perform oversampling
+smote = SMOTE(sampling_strategy='auto', random_state=42)  
+
+X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
+# Train the classifier on the resampled data
+clf.fit(X_train_resampled, y_train_resampled)
+
+# Predictions
+y_pred = clf.predict(X_test)
+classification_rep = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
+
+# Display classification report in Streamlit
+st.text("SMOTE Classification Report:\n" + classification_rep)
+
+
+
+
+
+
 
 st.title('Reciever operating characteristics')
 
