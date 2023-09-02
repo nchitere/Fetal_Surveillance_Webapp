@@ -299,6 +299,7 @@ xgb_classifier.fit(X_train_oversampled, y_train_oversampled)
 accuracy = xgb_classifier.score(X_test, y_test)
 st.write("XGboost Accuracy on test set:", accuracy)
 
-st.write("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
-st.write('Classification report')
-st.text("Oversmapled XGboost Classification Report:\n" + classification_rep)
+classification_rep_xg = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
+
+# Display classification report in Streamlit
+st.text("Oversampled Classification Report:\n" + classification_rep_xg)
