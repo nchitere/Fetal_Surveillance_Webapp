@@ -299,10 +299,11 @@ xgb_classifier.fit(X_train_oversampled, y_train_oversampled)
 accuracy_xg = xgb_classifier.score(X_test, y_test)
 st.write("XGboost Accuracy on test set:", accuracy_xg)
 # #Confusion matrix
-# confusion_matrix_xg = confusion_matrix(y_test, y_pred)
-# st.text("Oversampled Confusion Matrix Xgboost:\n" + confusion_matrix_xg)
+y_pred_xg = xgb_classifier.predict(X_test)
+confusion_matrix_xg = confusion_matrix(y_test, y_pred_xg)
+st.text("Oversampled Confusion Matrix Xgboost:\n" + confusion_matrix_xg)
 
-classification_rep_xg = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
+classification_rep_xg = classification_report(y_test, y_pred_xg, target_names=['Normal', 'Suspect', 'Pathological'])
 
 # Display classification report in Streamlit
 st.text("Oversampled Classification Report:\n" + classification_rep_xg)
