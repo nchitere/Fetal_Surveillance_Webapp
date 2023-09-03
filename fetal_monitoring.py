@@ -307,7 +307,7 @@ y_pred_xg = xgb_classifier.predict(X_test)
 classification_rep_xg = classification_report(y_test, y_pred_xg, target_names=['Normal', 'Suspect', 'Pathological'])
 
 # Display classification report in Streamlit
-st.text("Oversampled Classification Report:\n" + classification_rep_xg)
+st.text("Oversampled XGboost Classification Report:\n" + classification_rep_xg)
 line1 = """The model achieved high precision and recall for the Normal class (0.96 and 0.95, respectively), indicating accurate predictions for this class."""
 st.text(line1 )
 st.write("The Suspect class had lower precision and recall (0.81 and 0.78), suggesting some difficulty in correctly identifying Suspect cases.")
