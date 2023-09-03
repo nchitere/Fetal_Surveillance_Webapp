@@ -313,3 +313,41 @@ st.text(line1 )
 st.write("The Suspect class had lower precision and recall (0.81 and 0.78), suggesting some difficulty in correctly identifying Suspect cases.")
 st.write("However, the model performed well in identifying Pathological cases, with a precision of 0.80 and high recall of 0.97.")
 st.write("Overall, the model achieved an accuracy of 93%, with a balanced macro average F1-score of 0.88 across all classes.")
+
+
+
+
+# Create a sidebar for XGBoost options
+st.sidebar.title("XGBoost Options")
+
+# Add a dropdown widget to select features
+selected_features = st.sidebar.multiselect("Select Features for XGBoost", features, default=features)
+
+# Add a button to trigger the XGBoost model
+if st.sidebar.button("Run XGBoost"):
+    # Subset the data based on selected features
+    X_xg = fetal[selected_features]
+    y_xg = fetal[target]
+    X_train_xg, X_test_xg, y_train_xg, y_test_xg = train_test_split(X_xg, y_xg, test_size=0.2, random_state=42)
+
+    # Create and train the XGBoost classifier on the oversampled training data
+    class_labels = [0, 1, 2]
+    xgb_classifier = XGBClassifier(objective='multi:softmax', num_class=len(class_labels), classes=class_labels)
+    xgb_classifier.fit(X_train_oversampled, y_train_oversampled)
+
+    # Evaluate the model on the test data
+    accuracy_xg = xgb_classifier.score(X_test_xg, y_test_xg)
+
+    # Confusion matrix
+    y_pred_xg = xgb_classifier.predict(X_test_xg)
+    confusion_matrix_xg = confusion_matrix(y_test_xg, y_pred_xg)
+
+    # Classification report
+    classification_rep_xg = classification_report(y_test_xg, y_pred_xg, target_names=['Normal', 'Suspect', 'Pathological'])
+
+    # Display model results
+    st.title('XGBoost Model Results')
+    st.write(f"Selected Features: {', '.join(selected_features)}")
+    st.write("XGBoost Accuracy on test set:", accuracy_xg)
+    st.text("Confusion Matrix:\n" + str(confusion_matrix_xg))
+    st.text("Classification Report:\n" + classification_rep_xg)
