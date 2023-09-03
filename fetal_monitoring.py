@@ -1,19 +1,6 @@
 #Import the streamlit package
 import streamlit as st
 
-# # Create a sidebar with navigation links
-# page = st.sidebar.selectbox("Choose a page", ["Page 1", "Page 2"])
-# # Define the content for each page
-# if page == "Page 1":
-#     st.title("Welcome to the Page 1")
-#     st.write("Here is a summary of the Machine Learning Project.")
-
-# elif page == "Page 2":
-#     st.title("Page 2")
-#     st.write("Here is the interactive platform for the features.")
-
-
-
 #Instantiate a streamlit app
 ##Set title to Fetal monitoring project
 
@@ -192,20 +179,21 @@ clf = RandomForestClassifier(random_state=42)
 clf.fit(X_train, y_train)
 
 # Predictions
-y_pred = clf.predict(X_test)
+y_pred_imb = clf.predict(X_test)
 
 st.title('Model evaluation on uncorrected class imbalance')
 
 st.write('Confusion matrix where 0=Normal, 1=Suspect & 2=Pathological')
-st.write("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+st.write("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_imb))
 st.write('Classification report')
-st.write("\nClassification Report:\n", classification_report(y_test, y_pred))
+st.write("\nClassification Report:\n", classification_report(y_test, y_pred_imb))
 """The model is performing reasonably well. It has high precision and recall for class 0, \
     meaning it's good at identifying instances of class \
         0(Normal). Class 1 has slightly lower precision and recall, indicating some misclassifications for category suspect. \
             Class 2 also has good precision and recall(Pathological). \
                 The weighted average F1-score of 0.93 suggests that the model is providing \
-                    a good overall balance between precision and recall across all classes."""
+                    a good overall balance between precision and recall across all classes.\
+                    However, since the class is imbalance the traning this results are likely biased"""
 
 
 st.write('Correcting for class imbalance in the target variable(fetal_health)')
