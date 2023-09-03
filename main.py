@@ -1,5 +1,5 @@
 import streamlit as st
-from page1 import show_page as page1
+from fetal_monitoring.py import show_page as page1
 from page2 import show_page as page2
 
 
