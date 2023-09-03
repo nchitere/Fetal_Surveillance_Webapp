@@ -193,7 +193,7 @@ st.write("\nClassification Report:\n", classification_report(y_test, y_pred_imb)
             Class 2 also has good precision and recall(Pathological). \
                 The weighted average F1-score of 0.93 suggests that the model is providing \
                     a good overall balance between precision and recall across all classes.\
-                    However, since the class is imbalance the traning this results are likely biased"""
+                    However, since the Target is imbalanced these results are likely biased"""
 
 
 st.write('Correcting for class imbalance in the target variable(fetal_health)')
