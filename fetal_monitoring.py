@@ -1,6 +1,19 @@
 #Import the streamlit package
 import streamlit as st
 
+# Create a sidebar with navigation links
+page = st.sidebar.selectbox("Choose a page", ["Page 1", "Page 2"])
+# Define the content for each page
+if page == "Page 1":
+    st.title("Welcome to the Page 1")
+    st.write("This is the home page content.")
+
+elif page == "Page 2":
+    st.title("Page 2")
+    st.write("This is the content for Page 2.")
+
+
+
 #Instantiate a streamlit app
 ##Set title to Fetal monitoring project
 
