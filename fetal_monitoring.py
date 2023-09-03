@@ -339,7 +339,7 @@ if st.sidebar.button("Run XGBoost"):
     accuracy_xg = xgb_classifier.score(X_test_xg, y_test_xg)
 
     # Confusion matrix
-    y_pred_xg = xgb_classifier.predict(X_test_xg)
+    y_pred_xg = xgb_classifier.predict(X_test)
     confusion_matrix_xg = confusion_matrix(y_test_xg, y_pred_xg)
 
     # Classification report
