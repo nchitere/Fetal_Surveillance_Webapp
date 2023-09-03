@@ -184,9 +184,9 @@ y_pred_imb = clf.predict(X_test)
 st.title('Model evaluation on uncorrected class imbalance')
 
 st.write('Confusion matrix where 0=Normal, 1=Suspect & 2=Pathological')
-st.write("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_imb))
+st.write("Confusion Matrix (class imbalance uncorrected):\n", confusion_matrix(y_test, y_pred_imb))
 st.write('Classification report')
-st.write("\nClassification Report:\n", classification_report(y_test, y_pred_imb))
+st.write("\nClassification Report (class imbalance uncorrected)::\n", classification_report(y_test, y_pred_imb))
 """The model is performing reasonably well. It has high precision and recall for class 0, \
     meaning it's good at identifying instances of class \
         0(Normal). Class 1 has slightly lower precision and recall, indicating some misclassifications for category suspect. \
@@ -196,7 +196,7 @@ st.write("\nClassification Report:\n", classification_report(y_test, y_pred_imb)
                     However, since the Target is imbalanced these results are likely biased"""
 
 
-st.write('Correcting for class imbalance in the target variable(fetal_health)')
+st.title('Correcting for class imbalance in the target variable(fetal_health) through umdersampling')
 
 # Split the data into training and testing sets
 X = fetal[features]
@@ -220,7 +220,7 @@ y_pred = clf.predict(X_test)
 
 st.title('Model evaluation after accounting for class imbalance')
 
-classification_rep = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
+classification_rep_undersampled = classification_report(y_test, y_pred, target_names=['Normal', 'Suspect', 'Pathological'])
 
 # Display classification report in Streamlit
 st.text("Undersampled Classification Report:\n" + classification_rep)
