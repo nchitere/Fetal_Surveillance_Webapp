@@ -350,4 +350,4 @@ if st.sidebar.button("Run XGBoost"):
     st.write(f"Selected Features: {', '.join(selected_features)}")
     st.write("XGBoost Accuracy on test set:", accuracy_xg)
     st.text("Confusion Matrix:\n" + str(confusion_matrix_xg))
-    st.text("Classification Report:\n" + classification_rep_xg)
+    st.text("XG Classification Report:\n" + classification_rep_xg)
