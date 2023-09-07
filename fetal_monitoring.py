@@ -186,7 +186,7 @@ st.title('Model evaluation on uncorrected class imbalance')
 st.write('Confusion matrix where 0=Normal, 1=Suspect & 2=Pathological')
 st.write("Confusion Matrix (class imbalance uncorrected):\n", confusion_matrix(y_test, y_pred_imb))
 st.write('Classification report')
-st.write("\nClassification Report (class imbalance uncorrected)::\n", classification_report(y_test, y_pred_imb))
+st.write("\nClassification Report (class imbalance uncorrected)::\n", classification_report(y_test, y_pred_imb, target_names=['Normal', 'Suspect', 'Pathological']))
 """The model is performing reasonably well. It has high precision and recall for class 0, \
     meaning it's good at identifying instances of class \
         0(Normal). Class 1 has slightly lower precision and recall, indicating some misclassifications for category suspect. \
