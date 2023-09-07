@@ -238,7 +238,7 @@ st.write("For the 'Pathological' class, precision is modest (53%), while recall 
 
 st.write("Overall accuracy is 83%, and macro averages indicate precision-recall balance across classes (69% precision, 88% recall, 75% F1-score). Weighted averages consider class frequencies, resulting in balanced performance metrics (88% precision, 83% recall, 84% F1-score).\n")
 
-st.write('In general undersampling doesn't seem the optimal approach for handling the class imbalance present in the dataset. Next we test oversampling')
+st.write("In general undersampling doesn't seem the optimal approach for handling the class imbalance present in the dataset. Next we test oversampling")
 
 
 
