@@ -255,7 +255,9 @@ classification_rep = classification_report(y_test, y_pred, target_names=['Normal
 
 # Display classification report in Streamlit
 st.text("Oversampled Classification Report:\n" + classification_rep)
-
+st.text('The overall accuracy of the model(when class imbalance is corrected using oversampling) is 91%, indicating that 91% of all predictions were correct across all classes.\
+This is higher than the accuracy where class imbalance was corrected through undersampling')
+st.text('The suspect class is however scoring lower on precision when compared to Normal class and Pathological class')
 
 
 st.title('Reciever operating characteristics')
