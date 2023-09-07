@@ -238,11 +238,11 @@ st.write("For the 'Pathological' class, precision is modest (53%), while recall 
 
 st.write("Overall accuracy is 83%, and macro averages indicate precision-recall balance across classes (69% precision, 88% recall, 75% F1-score). Weighted averages consider class frequencies, resulting in balanced performance metrics (88% precision, 83% recall, 84% F1-score).\n")
 
-#st.write("The report offers insights into the model's competence across fetal health categories, revealing strengths and areas for enhancement in predicting different cases.")
+st.write('In general undersampling doesn't seem the optimal approach for handling the class imbalance present in the dataset. Next we test oversampling')
 
 
 
-# Using SMOTE((Synthetic Minority Over-sampling Technique) to perform oversampling
+st.title('Using SMOTE((Synthetic Minority Over-sampling Technique) to perform oversampling')
 smote = SMOTE(sampling_strategy='auto', random_state=42)  
 
 X_train_oversampled, y_train_oversampled = smote.fit_resample(X_train, y_train)
