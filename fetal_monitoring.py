@@ -242,7 +242,7 @@ st.write("In general undersampling doesn't seem the optimal approach for handlin
 
 
 
-st.title('Using SMOTE((Synthetic Minority Over-sampling Technique) to perform oversampling')
+st.title('Using SMOTE:-Synthetic Minority Over-sampling Technique to perform oversampling')
 smote = SMOTE(sampling_strategy='auto', random_state=42)  
 
 X_train_oversampled, y_train_oversampled = smote.fit_resample(X_train, y_train)
