@@ -172,6 +172,7 @@ else:
 
     # Show the pairplot in Streamlit
     st.pyplot()
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 
