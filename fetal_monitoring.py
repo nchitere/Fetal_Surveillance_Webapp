@@ -285,7 +285,7 @@ st.write('This is higher than the accuracy where class imbalance was corrected t
 st.text('The suspect class is however scoring lower on precision when compared to Normal class and Pathological class')
 
 
-st.title('Area Under Curve (AUC) ROC)
+st.title('Area Under Curve (AUC) ROC')
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 from sklearn.preprocessing import label_binarize
