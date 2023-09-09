@@ -168,7 +168,7 @@ if len(selected_columns) < 2:
 else:
     # Create a pairplot using Seaborn for the selected columns
     st.subheader('Pairplot')
-    sns.pairplot(fetal_health[selected_columns])
+    sns.pairplot(fetal[selected_columns])
 
     # Show the pairplot in Streamlit
     st.pyplot()
