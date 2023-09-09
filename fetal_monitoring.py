@@ -361,16 +361,16 @@ def predict(classifier, input_data):
     predictions = classifier.predict(input_data)
     return predictions
 
-# Streamlit UI
-st.title('XGBoost Classifier')
+#Streamlit User Interface
+st.title('XGBoost Classifier Predictions')
 st.sidebar.header('Input Features')
 
 # Create input fields for features (modify this based on your feature names)
-feature1 = st.sidebar.number_input('accelerations', value=0.0)
-feature2 = st.sidebar.number_input('prolongued_decelerations', value=0.0)
-feature3 = st.sidebar.number_input('abnormal_short_term_variability', value=0.0)
-feature4 = st.sidebar.number_input('percentage_of_time_with_abnormal_long_term_variability', value=0.0)
-feature5 = st.sidebar.number_input('mean_value_of_long_term_variability', value=0.0)
+feature1 = st.sidebar.number_input('accelerations', value=0.000)
+feature2 = st.sidebar.number_input('prolongued_decelerations', value=0.000)
+feature3 = st.sidebar.number_input('abnormal_short_term_variability', value=0.0000)
+feature4 = st.sidebar.number_input('percentage_of_time_with_abnormal_long_term_variability', value=0.0000)
+feature5 = st.sidebar.number_input('mean_value_of_long_term_variability', value=0.0000)
 
 
 # Create a button to make predictions
