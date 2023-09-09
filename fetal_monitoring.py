@@ -161,6 +161,7 @@ st.write('Users can select specific columns of interest for the pairplot, \
 and the app generates a Seaborn pairplot to visualize relationships between the chosen features.')
 st.write('It also includes a minimum selection requirement of at least two columns to create a meaningful pairplot')
 # Select specific columns for the pairplot
+st.set_option('deprecation.showPyplotGlobalUse', False)
 selected_columns = st.multiselect(
     'Select columns for the pairplot',
     list(fetal.columns),
@@ -177,7 +178,7 @@ else:
 
     # Show the pairplot in Streamlit
     st.pyplot()
-st.set_option('deprecation.showPyplotGlobalUse', False)
+
 
 
 
