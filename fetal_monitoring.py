@@ -155,6 +155,26 @@ st.write("3. Allows for accurate interpretation of performance metrics")
 # Map the target variable values to 0, 1, and 2
 fetal['fetal_health'] = fetal['fetal_health'].map({1: 0, 2: 1, 3: 2})
 
+# and you want to select specific columns for the pairplot
+selected_columns = st.multiselect(
+    'Select columns for the pairplot',
+    list(fetal_health.columns),
+    default=['fetal_health', 'accelerations', 'prolongued_decelerations']
+)
+
+# Check if at least two columns are selected
+if len(selected_columns) < 2:
+    st.warning('Please select at least two columns for the pairplot.')
+else:
+    # Create a pairplot using Seaborn for the selected columns
+    st.subheader('Pairplot')
+    sns.pairplot(fetal_health[selected_columns])
+
+    # Show the pairplot in Streamlit
+    st.pyplot()
+
+
+
 
 
 st.title('Models')
