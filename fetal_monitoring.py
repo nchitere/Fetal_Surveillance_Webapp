@@ -315,9 +315,9 @@ st.pyplot()
 # Format labels for classes
 for i in range(n_classes):
     st.text(f'Class {i}: AUC = {roc_auc_scores[i]:.2f}')
-st.write('Class 0 and Class 1 have similarly high AUC values of 0.96, \
+st.write('Class 0(Normal) and Class 1(Suspect) have similarly high AUC values of 0.96, \
 indicating strong classifier performance in distinguishing them from other classes.')
-st.write('Class 2 has the highest AUC of 0.99, suggesting even better separation from other classes, \
+st.write('Class 2(Pathological) has the highest AUC of 0.99, suggesting even better separation from other classes, \
 indicating excellent classifier performance for Class 2.')
 
 
@@ -346,6 +346,51 @@ st.text(line1 )
 st.write("The Suspect class had lower precision and recall (0.81 and 0.78), suggesting some difficulty in correctly identifying Suspect cases.")
 st.write("However, the model performed well in identifying Pathological cases, with a precision of 0.80 and high recall of 0.97.")
 st.write("Overall, the model achieved an accuracy of 93%, with a balanced macro average F1-score of 0.88 across all classes.")
+
+
+
+# Load the trained XGBoost model (you should replace 'your_model.pkl' with your actual model file)
+## save model
+xgb_classifier.save_model('fetal_status_classifier.pkl')
+xgb_classifier = XGBClassifier()
+xgb_classifier.load_model('fetal_status_classifier.pkl')
+
+# Function to make predictions
+def predict(classifier, input_data):
+    # Assuming input_data is a Pandas DataFrame with the same features as your training data
+    predictions = classifier.predict(input_data)
+    return predictions
+
+# Streamlit UI
+st.title('XGBoost Classifier')
+st.sidebar.header('Input Features')
+
+# Create input fields for features (modify this based on your feature names)
+feature1 = st.sidebar.number_input('Feature 1', value=0.0)
+feature2 = st.sidebar.number_input('Feature 2', value=0.0)
+# Add more features as needed
+
+# Create a button to make predictions
+if st.sidebar.button('Make Predictions'):
+    # Create a DataFrame with user inputs
+    input_data = pd.DataFrame({'Feature1': [feature1], 'Feature2': [feature2]})
+    # Make predictions
+    predictions = predict(xgb_classifier, input_data)
+    st.subheader('Predictions:')
+    st.write(predictions)
+
+# Add classification report (modify this part based on your report)
+st.subheader('Classification Report:')
+classification_rep_xg = """
+             precision    recall  f1-score   support
+
+     Normal       0.96      0.95      0.96       100
+    Suspect       0.81      0.78      0.79        50
+Pathological       0.80      0.97      0.88        70
+
+avg / total       0.88      0.88      0.88       220
+"""
+st.text(classification_rep_xg)
 
 
 
