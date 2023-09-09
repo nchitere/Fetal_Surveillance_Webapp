@@ -90,7 +90,7 @@ and no data is missing, no further is required.')
 
 
 st.title('Checking for class imbalance on the target variable')
-st.write('Class imbalance in the target can result in a biased model,\
+st.write('Class imbalance in the target can result in a biased model, \
 might not generalize well on test data sets \
 and since the pathological neonatal outcomes are not the norm, yet flagging at risk neonates  is critical, \
 it is important to check for and correct for class imbalance where appicable')
@@ -108,10 +108,10 @@ fig.update_layout(
 
 # Display the plot in Streamlit
 st.plotly_chart(fig)
-st.write('The figure above shows that there is a class imbalance on fetal outcomes where\
+st.write('The figure above shows that there is a class imbalance on fetal outcomes where \
          1=Normal, 2=Suspect, and 3=Pathological')
-st.write('The displayed output indicates that majority of the monitored fetuses are categorized normal,\
-while a smaller portion falling into the suspect or pathological categories.')
+st.write('The displayed output indicates that majority of the monitored fetuses are categorized normal, \
+while a smaller portion fall into the suspect or pathological categories.')
 
 st.title('Feature selection')
 # Calculate the correlation matrix
@@ -196,7 +196,7 @@ st.text("Imbalanced Classification Report:\n" + classification_report_imb)
             Class 2 also has good precision and recall(Pathological). \
                 The weighted average F1-score of 0.93 suggests that the model is providing \
                     a good overall balance between precision and recall across all classes.\
-                    However, since the Target is imbalanced these results are likely biased"""
+                    However, since the Target is imbalanced these results are likely biased."""
 
 
 st.title('Correcting for class imbalance in the target variable(fetal_health) through umdersampling')
@@ -255,7 +255,8 @@ classification_rep = classification_report(y_test, y_pred, target_names=['Normal
 
 # Display classification report in Streamlit
 st.text("Oversampled Classification Report:\n" + classification_rep)
-st.text('The overall accuracy of the model(when class imbalance is corrected using oversampling) is 91%, indicating that 91% of all predictions were correct across all classes.\
+st.text('The overall accuracy of the model(when class imbalance is corrected using oversampling) is 91%, \
+indicating that 91% of all predictions were correct across all classes.\
 This is higher than the accuracy where class imbalance was corrected through undersampling')
 st.text('The suspect class is however scoring lower on precision when compared to Normal class and Pathological class')
 
