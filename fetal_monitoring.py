@@ -353,7 +353,10 @@ st.write("Overall, the model achieved an accuracy of 93%, with a balanced macro 
 ## save model
 xgb_classifier.save_model('fetal_status_classifier.pkl')
 xgb_classifier = XGBClassifier()
-xgb_classifier.load_model('fetal_status_classifier.pkl')
+#xgb_classifier.load_model('fetal_status_classifier.pkl')
+
+import pickle
+xgb_classifier = pickle.load(open('fetal_status_classifier.pkl', 'rb'))
 
 # Function to make predictions
 def predict(classifier, input_data):
@@ -361,7 +364,10 @@ def predict(classifier, input_data):
     predictions = classifier.predict(input_data)
     return predictions
 
-#Streamlit User Interface
+# Define class labels
+class_labels = {0: 'normal', 1: 'suspect', 2: 'pathological'}
+
+# Streamlit User Interface
 st.title('XGBoost Classifier Predictions')
 st.sidebar.header('Input Features')
 st.sidebar.subheader('Output at the last section of the app')
@@ -373,7 +379,6 @@ feature3 = st.sidebar.number_input('abnormal_short_term_variability', value=0.00
 feature4 = st.sidebar.number_input('percentage_of_time_with_abnormal_long_term_variability', value=0.0000, format="%.4f")
 feature5 = st.sidebar.number_input('mean_value_of_long_term_variability', value=0.0000, format="%.4f")
 
-
 # Create a button to make predictions
 if st.sidebar.button('Make Predictions'):
     # Create a DataFrame with user inputs
@@ -381,22 +386,12 @@ if st.sidebar.button('Make Predictions'):
                               'Feature4': [feature4], 'Feature5': [feature5]})
     # Make predictions
     predictions = predict(xgb_classifier, input_data)
-    st.subheader('Predictions:')
-    st.write(predictions)
-
-# Add classification report (modify this part based on your report)
-st.subheader('Classification Report:')
-classification_rep_xg = """
-             precision    recall  f1-score   support
-
-     Normal       0.96      0.95      0.96       100
-    Suspect       0.81      0.78      0.79        50
-Pathological       0.80      0.97      0.88        70
-
-avg / total       0.88      0.88      0.88       220
-"""
-st.text(classification_rep_xg)
-
+    
+    # Map predicted labels to their corresponding class names
+    predicted_class = class_labels[predictions[0]]
+    
+    st.subheader('Predicted Class:')
+    st.write(predicted_class)
 
 
 
