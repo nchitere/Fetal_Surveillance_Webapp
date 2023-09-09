@@ -9,7 +9,7 @@ st.write('The monitoring of fetal well-being stands as a pivotal factor in shapi
 st.write('Knowing which indicators to focus on can be the difference between good vs bad neonatal outcomes.')
 st.write('In this project we use machine learning to singleout which features are the best predictors of fetal outcomes.')
 st.write('Data source: Kaggle')
-st.write('This dataset contains 2126 records of features extracted from Cardiotocogram exams,\
+st.write('This dataset contains 2126 records of features extracted from Cardiotocogram exams, \
 which were then classified by three expert obstetritians into 3 classes:1. Normal, 2.Suspect, & 3.Pathological')
 
 #Load data processing libraries
