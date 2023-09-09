@@ -181,9 +181,6 @@ else:
 
 
 
-
-
-
 st.title('Models')
 st.title('RandomForest Classfier')
 st.write('The Random Forest Classifier demonstrates its robustness in fetal health prediction, harnessing a diverse array of features for precise evaluations.'
@@ -314,6 +311,10 @@ plt.ylabel('True Positive Rate')
 plt.title('Receiver Operating Characteristic')
 plt.legend(loc='lower right')
 plt.show()
+
+# Format labels for classes
+for i in range(n_classes):
+    st.text(f'Class {i}: AUC = {roc_auc_scores[i]:.2f}')
 st.pyplot()
 
 
