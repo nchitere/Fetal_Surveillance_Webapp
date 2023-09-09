@@ -356,7 +356,9 @@ xgb_classifier = XGBClassifier()
 
 
 import pickle
-xgb_classifier = pickle.load(open('fetal_status_classifier.pkl', 'rb'))
+# Save the model to a pickle file
+with open('fetal_status_classifier.pkl', 'wb') as file:
+    pickle.dump(xgb_classifier, file)
 
 # Function to make predictions
 def predict(classifier, input_data):
