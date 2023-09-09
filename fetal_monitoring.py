@@ -158,7 +158,7 @@ fetal['fetal_health'] = fetal['fetal_health'].map({1: 0, 2: 1, 3: 2})
 # and you want to select specific columns for the pairplot
 selected_columns = st.multiselect(
     'Select columns for the pairplot',
-    list(fetal_health.columns),
+    list(fetal.columns),
     default=['fetal_health', 'accelerations', 'prolongued_decelerations']
 )
 
