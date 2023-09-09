@@ -353,7 +353,7 @@ st.write("Overall, the model achieved an accuracy of 93%, with a balanced macro 
 ## save model
 xgb_classifier.save_model('fetal_status_classifier.pkl')
 xgb_classifier = XGBClassifier()
-#xgb_classifier.load_model('fetal_status_classifier.pkl')
+
 
 import pickle
 xgb_classifier = pickle.load(open('fetal_status_classifier.pkl', 'rb'))
