@@ -369,7 +369,7 @@ def predict(classifier, input_data):
 class_labels = {0: 'normal', 1: 'suspect', 2: 'pathological'}
 
 # Streamlit User Interface
-st.title('XGBoost Classifier Predictions')
+st.title('XGBoost Classifier Prediction')
 st.sidebar.header('Input Features')
 st.sidebar.subheader('Output at the last section of the app')
 
@@ -382,9 +382,15 @@ feature5 = st.sidebar.number_input('mean_value_of_long_term_variability', value=
 
 # Create a button to make predictions
 if st.sidebar.button('Make Predictions'):
-    # Create a DataFrame with user inputs
-    input_data = pd.DataFrame({'Feature1': [feature1], 'Feature2': [feature2],'Feature3': [feature3],\
-                              'Feature4': [feature4], 'Feature5': [feature5]})
+    # Create a DataFrame with user inputs using the correct feature names
+    input_data = pd.DataFrame({
+        'accelerations': [feature1],
+        'prolongued_decelerations': [feature2],
+        'abnormal_short_term_variability': [feature3],
+        'percentage_of_time_with_abnormal_long_term_variability': [feature4],
+        'mean_value_of_long_term_variability': [feature5]
+    })
+
     # Make predictions
     predictions = predict(xgb_classifier, input_data)
     
@@ -393,6 +399,9 @@ if st.sidebar.button('Make Predictions'):
     
     st.subheader('Predicted Class:')
     st.write(predicted_class)
+
+
+
 
 
 
