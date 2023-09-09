@@ -155,7 +155,12 @@ st.write("3. Allows for accurate interpretation of performance metrics")
 # Map the target variable values to 0, 1, and 2
 fetal['fetal_health'] = fetal['fetal_health'].map({1: 0, 2: 1, 3: 2})
 
-# and you want to select specific columns for the pairplot
+st.title('Title: Customizable Pairplot')
+st.write('This Streamlit app allows users to create customizable pairplots from a dataset.')
+st.write('Users can select specific columns of interest for the pairplot, \
+and the app generates a Seaborn pairplot to visualize relationships between the chosen features.')
+st.write('It also includes a minimum selection requirement of at least two columns to create a meaningful pairplot')
+# Select specific columns for the pairplot
 selected_columns = st.multiselect(
     'Select columns for the pairplot',
     list(fetal.columns),
