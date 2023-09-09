@@ -285,7 +285,7 @@ st.write('This is higher than the accuracy where class imbalance was corrected t
 st.text('The suspect class is however scoring lower on precision when compared to Normal class and Pathological class')
 
 
-st.title('Reciever operating characteristics')
+st.title('Area Under Curve (AUC) ROC)
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 from sklearn.preprocessing import label_binarize
@@ -308,14 +308,17 @@ plt.xlim([0.0, 1.0])
 plt.ylim([0.0, 1.05])
 plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
-plt.title('Receiver Operating Characteristic')
+plt.title('Area Under Curve (AUC) ROC')
 plt.legend(loc='lower right')
-plt.show()
-
+#plt.show()
+st.pyplot()
 # Format labels for classes
 for i in range(n_classes):
     st.text(f'Class {i}: AUC = {roc_auc_scores[i]:.2f}')
-st.pyplot()
+st.write('Class 0 and Class 1 have similarly high AUC values of 0.96, \
+indicating strong classifier performance in distinguishing them from other classes.')
+st.write('Class 2 has the highest AUC of 0.99, suggesting even better separation from other classes, \
+indicating excellent classifier performance for Class 2.')
 
 
 st.title('XGboost')
