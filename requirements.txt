@@ -26,6 +26,7 @@ mdurl==0.1.2
 numpy
 packaging==23.1
 panda
+pickle
 Pillow
 plotly
 protobuf
