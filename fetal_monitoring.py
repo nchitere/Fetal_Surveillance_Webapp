@@ -366,14 +366,18 @@ st.title('XGBoost Classifier')
 st.sidebar.header('Input Features')
 
 # Create input fields for features (modify this based on your feature names)
-feature1 = st.sidebar.number_input('Feature 1', value=0.0)
-feature2 = st.sidebar.number_input('Feature 2', value=0.0)
-# Add more features as needed
+feature1 = st.sidebar.number_input('accelerations', value=0.0)
+feature2 = st.sidebar.number_input('prolongued_decelerations', value=0.0)
+feature3 = st.sidebar.number_input('abnormal_short_term_variability', value=0.0)
+feature4 = st.sidebar.number_input('percentage_of_time_with_abnormal_long_term_variability', value=0.0)
+feature5 = st.sidebar.number_input('mean_value_of_long_term_variability', value=0.0)
+
 
 # Create a button to make predictions
 if st.sidebar.button('Make Predictions'):
     # Create a DataFrame with user inputs
-    input_data = pd.DataFrame({'Feature1': [feature1], 'Feature2': [feature2]})
+    input_data = pd.DataFrame({'Feature1': [feature1], 'Feature2': [feature2],'Feature3': [feature3],\
+                              'Feature4': [feature4], 'Feature5': [feature5]})
     # Make predictions
     predictions = predict(xgb_classifier, input_data)
     st.subheader('Predictions:')
