@@ -4,7 +4,7 @@ import streamlit as st
 #Instantiate a streamlit app
 ##Set title to Fetal monitoring project
 
-st.title(':fetus: Fetal monitoring project: :baby:')
+st.title(':baby: Fetal monitoring project: :baby:')
 st.write('The monitoring of fetal well-being stands as a pivotal factor in shaping positive neonatal outcomes in pregnancy, labor and delivery.')
 st.write('Knowing which indicators to focus on can be the difference between good vs bad neonatal outcomes.')
 st.write('In this project we use machine learning to singleout which features are the best predictors of fetal outcomes.')
