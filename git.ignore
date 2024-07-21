@@ -9,4 +9,5 @@ __pycache__/
 .idea/
 .vscode/
 *.log
+.venv/Lib/site-packages/xgboost/lib/xgboost.dll
 
